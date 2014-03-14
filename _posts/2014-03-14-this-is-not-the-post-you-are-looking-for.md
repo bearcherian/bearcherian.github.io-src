@@ -7,7 +7,7 @@ image:
   feature: 
   credit: 
   creditlink: 
-comments: 
-share: 
+comments: true
+share: true
 ---
 Nothing to see here. Move along.
