@@ -7,8 +7,8 @@ image:
   feature: 
   credit: 
   creditlink: 
-comments: 
-share: 
+comments: true 
+share: true
 ---
 We had a requirement to enforce alt attributes on images. Sounds simple, just set the alt field to required. The problem is when you do that for components that use images, like Text & Image. If a user decides to enter text, but not use the image portion the ALT text is still required, and the alert for a missing field still appears.
 
