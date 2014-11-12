@@ -7,8 +7,8 @@ image:
   feature: 
   credit: 
   creditlink: 
-comments: 
-share: 
+comments: true
+share: true
 ---
 
 Recently I was perusing crawl errors from [Google's Webmaster Tools](https://www.google.com/webmasters/tools/) to find any issues that had not yet been reported. I came across dozens of 500 errors coming from requests to one particular page. When I went to view the page I saw our template mangled with content from an Arabic news site. What was going on?!
