@@ -11,6 +11,8 @@ comments: true
 share: true
 ---
 
+***Update (2014.11.24):** The post below references an issue with a Component in CQ 5.5. I finally heard back from Adobe support and the issue has been resolved in CQ 5.6.1 by removing the Adaptive feature. They provided [this forum post](http://help-forums.adobe.com/content/adobeforums/en/experience-manager-forum/adobe-experience-manager.topic.312.html/forum__75v9-hi_in_cq_5_5the.html) as a reference.*
+
 Recently I was perusing crawl errors from [Google's Webmaster Tools](https://www.google.com/webmasters/tools/) to find any issues that had not yet been reported. I came across dozens of 500 errors coming from requests to one particular page. When I went to view the page I saw our template mangled with content from an Arabic news site. What was going on?!
 
 The page itself, without any parameters, was simply a templated page with an external component loading a basic HTML form hosted on another server. Each 500-error request had a query parameter of `CFC__target`, which was set to a URL on an Arabic news site. So a page at `path/to/page.html` appeared as `path/to/page.html?CFC__target=http://www.somesite.com`. If you're trying this out on your CQ environment, note the double underscore.
