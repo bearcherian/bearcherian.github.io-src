@@ -1,7 +1,7 @@
 # Site settings
 baseurl = "http://bearcherian.github.io/"
 # HTML Language Code Reference, such as en, zh-cn
-languageCode = "en"
+languageCode = "en-us"
 title = "Bear Cherian"
 theme = "hugo-theme-cactus-plus"
 # Enter your tracking code to enable Google Analytics

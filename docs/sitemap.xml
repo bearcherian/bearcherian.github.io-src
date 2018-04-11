@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>http://bearcherian.github.io/about/</loc>
+    <lastmod>2017-08-09T11:19:48-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://bearcherian.github.io/2014/11/12/the-vulnerable-external-component/</loc>
+    <lastmod>2014-11-12T12:52:43-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://bearcherian.github.io/2014/06/18/smart-alt-field-validation/</loc>
+    <lastmod>2014-06-18T09:20:44-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://bearcherian.github.io/tags/</loc>
+    <lastmod>2017-08-09T11:19:48-04:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://bearcherian.github.io/categories/</loc>
+    <lastmod>2017-08-09T11:19:48-04:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://bearcherian.github.io/post/mutli-threading-resource-resolvers/</loc>
+  </url>
+  
+  <url>
+    <loc>http://bearcherian.github.io/post/when-a-page-is-not-a-page/</loc>
+  </url>
+  
+  <url>
+    <loc>http://bearcherian.github.io/tags/acessibility/</loc>
+    <lastmod>2014-06-18T09:20:44-04:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://bearcherian.github.io/tags/ada-compliance/</loc>
+    <lastmod>2014-06-18T09:20:44-04:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://bearcherian.github.io/tags/aem/</loc>
+    <lastmod>2014-06-18T09:20:44-04:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://bearcherian.github.io/</loc>
+    <lastmod>2017-08-09T11:19:48-04:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://bearcherian.github.io/categories/</loc>
+    <lastmod>2017-08-09T11:19:48-04:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://bearcherian.github.io/tags/cq/</loc>
+    <lastmod>2014-11-12T12:52:43-05:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://bearcherian.github.io/tags/external/</loc>
+    <lastmod>2014-11-12T12:52:43-05:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://bearcherian.github.io/tags/iframe/</loc>
+    <lastmod>2014-11-12T12:52:43-05:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://bearcherian.github.io/tags/images/</loc>
+    <lastmod>2014-06-18T09:20:44-04:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://bearcherian.github.io/post/</loc>
+    <lastmod>2014-11-12T12:52:43-05:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://bearcherian.github.io/tags/security/</loc>
+    <lastmod>2014-11-12T12:52:43-05:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://bearcherian.github.io/tags/</loc>
+    <lastmod>2017-08-09T11:19:48-04:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+</urlset>

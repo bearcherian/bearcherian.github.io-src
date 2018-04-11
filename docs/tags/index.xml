@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on Bear Cherian</title>
+    <link>http://bearcherian.github.io/tags/</link>
+    <description>Recent content in Tags on Bear Cherian</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Wed, 09 Aug 2017 11:19:48 -0400</lastBuildDate>
+    
+	<atom:link href="http://bearcherian.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title></title>
+      <link>http://bearcherian.github.io/tags/</link>
+      <pubDate>Wed, 09 Aug 2017 11:19:48 -0400</pubDate>
+      
+      <guid>http://bearcherian.github.io/tags/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Acessibility</title>
+      <link>http://bearcherian.github.io/tags/acessibility/</link>
+      <pubDate>Wed, 18 Jun 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://bearcherian.github.io/tags/acessibility/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Ada Compliance</title>
+      <link>http://bearcherian.github.io/tags/ada-compliance/</link>
+      <pubDate>Wed, 18 Jun 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://bearcherian.github.io/tags/ada-compliance/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Aem</title>
+      <link>http://bearcherian.github.io/tags/aem/</link>
+      <pubDate>Wed, 18 Jun 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://bearcherian.github.io/tags/aem/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Cq</title>
+      <link>http://bearcherian.github.io/tags/cq/</link>
+      <pubDate>Wed, 12 Nov 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://bearcherian.github.io/tags/cq/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>External</title>
+      <link>http://bearcherian.github.io/tags/external/</link>
+      <pubDate>Wed, 12 Nov 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://bearcherian.github.io/tags/external/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Iframe</title>
+      <link>http://bearcherian.github.io/tags/iframe/</link>
+      <pubDate>Wed, 12 Nov 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://bearcherian.github.io/tags/iframe/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Images</title>
+      <link>http://bearcherian.github.io/tags/images/</link>
+      <pubDate>Wed, 18 Jun 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://bearcherian.github.io/tags/images/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Security</title>
+      <link>http://bearcherian.github.io/tags/security/</link>
+      <pubDate>Wed, 12 Nov 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://bearcherian.github.io/tags/security/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

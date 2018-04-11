@@ -1,0 +1,186 @@
+    <!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="author" content="Bear Cherian">
+		<meta name="description" content="An exploration of technical things">
+		<meta name="generator" content="Hugo 0.38.2" />
+		<title>The Vulnerable External Component &middot; Bear Cherian</title>
+		<link rel="shortcut icon" href="http://bearcherian.github.io/images/favicon.ico">
+		<link rel="stylesheet" href="http://bearcherian.github.io/css/style.css">
+		<link rel="stylesheet" href="http://bearcherian.github.io/css/highlight.css">
+		
+
+		
+		<link rel="stylesheet" href="http://bearcherian.github.io/css/font-awesome.min.css">
+		
+
+		
+	</head>
+
+    <body>
+       <nav class="main-nav">
+	
+	
+		<a href='http://bearcherian.github.io/'> <span class="arrow">←</span>Home</a>
+	
+	<a href='http://bearcherian.github.io/post'>Archive</a>
+	<a href='http://bearcherian.github.io/tags'>Tags</a>
+	<a href='http://bearcherian.github.io/about'>About</a>
+
+	
+
+	
+</nav>
+
+
+        <section id="wrapper">
+            <article class="post">
+                <header>
+                    <h1>
+                        The Vulnerable External Component
+                    </h1>
+                    <h2 class="headline">
+                    Nov 12, 2014 00:00
+                    · 738 words
+                    · 4 minutes read
+                      <span class="tags">
+                      
+                      
+                          
+                              <a href="http://bearcherian.github.io/tags/cq">CQ</a>
+                          
+                              <a href="http://bearcherian.github.io/tags/external">external</a>
+                          
+                              <a href="http://bearcherian.github.io/tags/iframe">iframe</a>
+                          
+                              <a href="http://bearcherian.github.io/tags/security">security</a>
+                          
+                      
+                      
+                      </span>
+                    </h2>
+                </header>
+                
+                <section id="post-body">
+                    
+
+<p>*<strong>Update (2014.11.24):</strong> The post below references an issue with a Component in CQ 5.5. I finally heard back from Adobe support and the issue has been resolved in CQ 5.6.1 by removing the Adaptive feature. They provided <a href="http://help-forums.adobe.com/content/adobeforums/en/experience-manager-forum/adobe-experience-manager.topic.312.html/forum__75v9-hi_in_cq_5_5the.html">this forum post</a> as a reference.*</p>
+
+<p>Recently I was perusing crawl errors from <a href="https://www.google.com/webmasters/tools/">Google&rsquo;s Webmaster Tools</a> to find any issues that had not yet been reported. I came across dozens of 500 errors coming from requests to one particular page. When I went to view the page I saw our template mangled with content from an Arabic news site. What was going on?!</p>
+
+<p>The page itself, without any parameters, was simply a templated page with an external component loading a basic HTML form hosted on another server. Each 500-error request had a query parameter of <code>CFC__target</code>, which was set to a URL on an Arabic news site. So a page at <code>path/to/page.html</code> appeared as <code>path/to/page.html?CFC__target=http://www.somesite.com</code>. If you&rsquo;re trying this out on your CQ environment, note the double underscore.</p>
+
+<p>I replaced the news site link with a link of my own. Lo&rsquo; and behold, now my link loaded up, mangling the content of the original page. I edited the page and changed the mode from Adaptive to Fixed and tried using the <code>CFC__target</code> again. This time the page wasn&rsquo;t mangled, but the content of the URL in the <code>CFC__target</code> parameter loaded up in the iframe.</p>
+
+<h3 id="understanding-the-external-component">Understanding the External Component</h3>
+
+<p>The External component has very little code in the JSPs. It totals about 15 lines of code across two JSPs, not including dialog, comments, and imports. Most of the work is done by <a href="http://docs.adobe.com/docs/en/cq/current/javadoc/com/day/cq/wcm/foundation/External.html">com.day.cq.wcm.foundation.External</a>.</p>
+
+<p>In the dialog, the External component has two Inclusion mode options: &ldquo;Fixed&rdquo; and &ldquo;Adaptive&rdquo;. In &ldquo;Fixed&rdquo; mode, the target URL is placed into an iframe. Simple and easy. This is not always ideal because the layout and style of the remote content does not fit well in an iframe.</p>
+
+<p>In &ldquo;Adaptive&rdquo; mode, the HTML of the target is placed on the page itself, and all of the links are rewritten to be relative paths. This way the content fits in nicely on the page, you don&rsquo;t have to guess on the height of the content, and you don&rsquo;t have to worry about CORS issues.</p>
+
+<p>The problem is how the adaptive mode work is done. Each link is rewritten to point to the page itself using a query parameter to read in the resource from the remote site. So if the page at the target URL includes a JavaScript file at <code>http://www.somesite.com/js/main.js</code>, it is rewritten as <code>path/to/page/jcr:content/par/external.spool?CFC__target=http://www.somesite.com/js/main.js</code>.</p>
+
+<h3 id="what-s-the-risk">What&rsquo;s the risk?</h3>
+
+<p>There doesn&rsquo;t seem to be a risk here to the server, at least not one that I could identify off the bat. The main risk here is to your end users.</p>
+
+<p>Knowing how the External Component works, hackers, phishers, and scammers now have a way to mimic your organizations site. Just create a fake logon page, add it as a parameter via <code>CFC__target</code>, and they now have a legitimate looking logon page with a legitimate looking URL that can be emailed out to phish usernames and passwords.</p>
+
+<h3 id="how-do-you-fix-it">How do you fix it?</h3>
+
+<p>There are a few options to fix this.</p>
+
+<ol>
+<li><strong>Remove the code that uses CFC__Target.</strong> This requires simply commenting out the lines that read in the request parameter and sets the external object&rsquo;s target. The drawback is it effectively breaks the Adaptive mode because the rewritten links no longer function correctly.</li>
+<li><strong>Change the parameter name.</strong> This is probably the least effective. If removed the fact that the parameter <code>CFC__target</code> can be used, but the new target parameter name is exposed by any resources referenced from the target URL.</li>
+<li><strong>Fix the External Class.</strong> This would be really nice, but since it is proprietary Adobe code, it&rsquo;s up to Adobe to fix this. I&rsquo;ve opened a ticket with Adobe support on this and am waiting for a response.</li>
+<li><strong>Disable the External Component.</strong> Seems a bit drastic, but it might be the best choice for you. For us, at this point, this isn&rsquo;t an option since we have hundred of pages that currently use this component. If you do decide to go this route, you will probably want to write your own component for loading content via iframe. But then that would be the same as option 1.</li>
+</ol>
+
+<p>Whatever option you choose, it&rsquo;s important to address this on your CQ instance to avoid your site being used to carry out malicious attacks.</p>
+
+                </section>
+            </article>
+
+            
+
+            
+                <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'bearcherianprogblog'; 
+
+     
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+
+            
+
+            
+
+            <footer id="footer">
+    
+        <div id="social">
+
+	
+	
+    <a class="symbol" href="https://www.github.com/bearcherian">
+        <i class="fa fa-github-square"></i>
+    </a>
+    
+    <a class="symbol" href="https://www.twitter.com/bearcherian">
+        <i class="fa fa-twitter-square"></i>
+    </a>
+    
+
+
+</div>
+
+    
+    <p class="small">
+    
+       © Copyright 2018 <i class="fa fa-heart" aria-hidden="true"></i> Bear Cherian
+    
+    </p>
+    <p class="small">
+        Powered by <a href="http://www.gohugo.io/">Hugo</a> Theme By <a href="https://github.com/nodejh/hugo-theme-cactus-plus">nodejh</a>
+    </p>
+</footer>
+
+        </section>
+
+        <script src="http://bearcherian.github.io/js/jquery-2.2.4.min.js"></script>
+<script src="http://bearcherian.github.io/js/main.js"></script>
+<script src="http://bearcherian.github.io/js/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+  
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-123542-10', 'auto');
+ga('send', 'pageview');
+</script>
+
+
+
+
+
+    </body>
+</html>
