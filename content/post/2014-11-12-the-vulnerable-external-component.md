@@ -1,14 +1,19 @@
 ---
-layout: post
-title: "The Vulnerable External Component"
-modified: 2014-11-12 12:52:43 -0500
-tags: [CQ,external,iframe,security]
-image:
-  feature: 
-  credit: 
-  creditlink: 
 comments: true
+date: 2014-11-12T00:00:00Z
+image:
+  credit: null
+  creditlink: null
+  feature: null
+modified: 2014-11-12 12:52:43 -0500
 share: true
+tags:
+- CQ
+- external
+- iframe
+- security
+title: The Vulnerable External Component
+url: /2014/11/12/the-vulnerable-external-component/
 ---
 
 ***Update (2014.11.24):** The post below references an issue with a Component in CQ 5.5. I finally heard back from Adobe support and the issue has been resolved in CQ 5.6.1 by removing the Adaptive feature. They provided [this forum post](http://help-forums.adobe.com/content/adobeforums/en/experience-manager-forum/adobe-experience-manager.topic.312.html/forum__75v9-hi_in_cq_5_5the.html) as a reference.*
