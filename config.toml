@@ -14,7 +14,7 @@ hasCJKLanguage = true
 	bio = ""
 	# Enter optionally your twitter account
 	twitter = "bearcherian"
-	enableRSS = false
+	enableRSS = true
 
 	# Disqus comment
 	disqusShortname = "bearcherianprogblog"
