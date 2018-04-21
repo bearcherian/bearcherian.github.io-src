@@ -7,7 +7,6 @@ theme = "hugo-theme-cactus-plus"
 # Enter your tracking code to enable Google Analytics
 googleAnalytics = "UA-123542-10"
 hasCJKLanguage = true
-publishDir = "docs"
 
 [params]
 	name = "Bear Cherian"
